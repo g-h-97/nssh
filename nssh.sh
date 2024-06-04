@@ -6,8 +6,8 @@ nodeName=$(echo ${node} | awk '{print $1}')
 accessType=$(echo ${node} | awk '{print $3}') 
 ip=$(echo ${node} | grep -oE "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}")
 port=$(echo ${node} | cut -d' ' -f 4)
-user=$(grep ${nodeName} ${confDir}/pass | awk '{print $2}')
-pass=$(grep ${nodeName} ${confDir}/pass | awk '{print $3}')
+user=$(grep -m1 ${nodeName} ${confDir}/pass | awk '{print $2}')
+pass=$(grep -m1 ${nodeName} ${confDir}/pass | awk '{print $3}')
 echo ${node}${nodeName}${ip}${port}${user}${pass}
 echo "node ${node}"
 echo "nodeName ${nodeName}"
